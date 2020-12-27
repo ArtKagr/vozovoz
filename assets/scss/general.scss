@@ -1,0 +1,196 @@
+html {
+  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  word-spacing: 1px;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.button--green {
+  display: inline-block;
+  border-radius: 4px;
+  border: 1px solid #3b8070;
+  color: #3b8070;
+  text-decoration: none;
+  padding: 10px 30px;
+}
+
+.button--green:hover {
+  color: #fff;
+  background-color: #3b8070;
+}
+
+.button--grey {
+  display: inline-block;
+  border-radius: 4px;
+  border: 1px solid #35495e;
+  color: #35495e;
+  text-decoration: none;
+  padding: 10px 30px;
+  margin-left: 15px;
+}
+
+.button--grey:hover {
+  color: #fff;
+  background-color: #35495e;
+}
+
+.custom_button {
+  cursor: pointer;
+  border-radius: 20px;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:focus {
+    text-decoration: none;
+    box-shadow: none;
+    outline: none;
+  }
+}
+
+.custom_dropdown_item {
+  &:focus {
+    outline: none;
+  }
+}
+
+.custom_input {
+  width: 600px;
+  border-radius: 20px;
+
+  &.-active {
+    border-radius: 20px 20px 0 0;
+    border: 1px solid red;
+    box-shadow: none;
+  }
+}
+
+.custom_input_time {
+  border-radius: 20px;
+
+  &.-active {
+    border-radius: 20px 20px 0 0;
+    border: 1px solid red;
+    box-shadow: none;
+  }
+}
+
+.container {
+  width: 600px;
+}
+
+.custom_input_container {
+  border-right: 1px solid red;
+  border-bottom: 1px solid red;
+  border-left: 1px solid red;
+  border-radius: 0 0 20px 20px;
+  max-height: 300px;
+  overflow: auto;
+  position: absolute;
+  width: 600px;
+  background: white;
+
+  &::-webkit-scrollbar { width: 0; }
+}
+
+.custom_input_item {
+  cursor: pointer;
+
+  &:hover {
+    background: #e0e0e0;
+  }
+
+  &-region {
+    font-size: 13px;
+    color: grey;
+  }
+}
+
+.close_container {
+  border-left: 1px solid red;
+  border-right: 1px solid red;
+
+  &-button {
+    cursor: pointer;
+    font-size: 13px;
+    color: grey;
+    z-index: 100 !important;
+  }
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.custom_geo_alt {
+  font-size: 10px;
+  color: red;
+
+  &-title {
+    color: red;
+    font-size: 10px;
+  }
+}
+
+.add_docs {
+  font-size: 12px;
+  color: red;
+}
+
+.calendar {
+
+  &-title {
+    font-size: 20px;
+  }
+
+  &-head {
+
+    &-day {
+      padding-left: 6px;
+      padding-right: 6px;
+    }
+
+    &-day_off {
+      padding-left: 6px;
+      padding-right: 6px;
+      color: red;
+    }
+  }
+
+  &-day {
+    cursor: pointer;
+    padding-left: 6px;
+    padding-right: 6px;
+
+    &:hover {
+      background: red;
+      color: white;
+      border-radius: 50px;
+    }
+  }
+
+  &-month {
+    align-items: flex-end;
+    flex: 1 0 auto;
+    color: red;
+  }
+
+  &-current_month {
+    border-bottom: 1px solid grey;
+    padding-bottom: 12px;
+  }
+
+  &-next_month {
+    padding-top: 12px;
+  }
+}

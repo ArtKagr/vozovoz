@@ -1,65 +1,46 @@
 <template>
-  <section class="container">
-    <div>
-      <app-logo/>
-      <h1 class="title">
-        vozovoz
-      </h1>
-      <h2 class="subtitle">
-        Nuxt.js project
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green">Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey">GitHub</a>
+  <div class="d-flex flex-column m-3 w-70 m-auto">
+    <div class="d-flex w-100 justify-content-center my-4">
+      <span class="h4">Выбор направления перевозки</span>
+    </div>
+    <div class="d-flex w-100">
+      <div class="d-flex container">
+        <div class="d-flex flex-column w-100">
+          <CityPoint source="departure" />
+          <Address source="departure" v-if="departureOption === 'address'" />
+          <Terminal v-else />
+        </div>
+      </div>
+      <div class="d-flex container">
+        <div class="d-flex flex-column w-100">
+          <CityPoint resource="receiving" />
+          <Address source="receiving" v-if="receivingOption === 'address'" />
+          <Terminal v-else />
+        </div>
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>
-import AppLogo from '~/components/AppLogo.vue'
-
+import Address from "../components/Address";
+import Terminal from "../components/Terminal";
+import CityPoint from "../components/CityPoint";
 export default {
-  components: {
-    AppLogo
-  }
+  name: 'Index',
+  components: {CityPoint, Terminal, Address},
+  data() {
+    return {
+
+    }
+  },
+  computed: {
+    departureOption() {
+      return this.$store.getters['main/getDepartureOption']
+    },
+    receivingOption() {
+      return this.$store.getters['main/getReceivingOption']
+    }
+  },
 }
 </script>
-
-<style>
-.container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-</style>
-
