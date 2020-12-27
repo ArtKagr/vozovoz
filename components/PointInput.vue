@@ -38,7 +38,7 @@ export default {
       inputState: false,
       currentItem: null,
       itemsCopy: [],
-      citiesPlaceholder: 'Введите населённый пункт',
+      locationsPlaceholder: 'Введите населённый пункт',
       addressesPlaceholder: 'Улица, дом',
     }
   },
@@ -68,11 +68,11 @@ export default {
   },
   computed: {
     placeholder() {
-      return this.point ? this.addressesPlaceholder : this.citiesPlaceholder
+      return this.point ? this.addressesPlaceholder : this.locationsPlaceholder
     },
     items() {
       if(this.point) return this.$store.getters['main/getAddresses']
-      else return this.$store.getters['main/getCities']
+      else return this.$store.getters['main/getLocations']
     },
   },
   methods: {
@@ -83,15 +83,19 @@ export default {
       this.inputState = false
     },
     setItem(item) {
+      this.$store.commit('main/UPDATE_PRICE_LOCATION', { item: item.guid, source: this.source })
       if(this.point) this.addressesPlaceholder = item.name
-      else this.citiesPlaceholder = item.name
+      else this.locationsPlaceholder = item.name
       this.currentItem = null
       this.inputState = false
     },
   },
   created() {
     if(this.point) this.itemsCopy = this.$store.getters['main/getAddresses']
-    else this.itemsCopy = this.$store.getters['main/getCities']
+    else this.itemsCopy = this.$store.getters['main/getLocations']
+
+    if(this.source === 'departure') this.locationsPlaceholder = 'Санкт-Петербург'
+    else this.locationsPlaceholder = 'Москва'
   }
 }
 </script>

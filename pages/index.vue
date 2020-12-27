@@ -27,11 +27,11 @@
       <div class="d-flex align-items-center total_cost">
         <span class="mr-2">Итого:</span>
         <div class="d-flex align-items-center">
-          <span class="mr-1">1050</span>
+          <span class="mr-1">{{ priceCalculate && priceCalculate.total ? priceCalculate.total : 0 }}</span>
           <span>₽</span>
         </div>
       </div>
-      <b-button variant="danger" class="custom_button px-4">Рассчитать</b-button>
+      <b-button variant="danger" class="custom_button px-4" @click="fetchPrice">Рассчитать</b-button>
     </div>
   </div>
 </template>
@@ -49,7 +49,19 @@ export default {
     },
     receivingPoint() {
       return this.$store.getters['main/getReceivingOption']
+    },
+    priceCalculate() {
+      return this.$store.getters['main/getPriceCalculate']
     }
   },
+  methods: {
+    fetchPrice() {
+      this.$store.dispatch('main/fetchPrice')
+    }
+  },
+  created() {
+    this.$store.dispatch('main/fetchLocations')
+    this.$store.dispatch('main/fetchPrice')
+  }
 }
 </script>
