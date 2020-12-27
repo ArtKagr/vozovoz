@@ -9,7 +9,7 @@
         >
           <b-icon-circle-fill v-if="pointOption === 'address'" class="m-0 h5 mr-2" variant="secondary"></b-icon-circle-fill>
           <b-icon-circle v-else class="m-0 h5 mr-2" variant="secondary"></b-icon-circle>
-          <span>От адреса</span>
+          <span>{{ source === 'departure' ? 'От' : 'До' }} адреса</span>
         </div>
         <div
           class="d-flex align-items-center pointer"
@@ -17,7 +17,7 @@
         >
           <b-icon-circle-fill v-if="pointOption === 'terminal'" class="m-0 h5 mr-2" variant="secondary"></b-icon-circle-fill>
           <b-icon-circle v-else class="m-0 h5 mr-2" variant="secondary"></b-icon-circle>
-          <span>От терминала</span>
+          <span>{{ source === 'departure' ? 'От' : 'До' }} терминала</span>
         </div>
       </div>
     </div>

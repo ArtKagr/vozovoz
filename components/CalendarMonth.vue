@@ -2,7 +2,7 @@
   <div class="d-flex flex-column w-100">
     <div class="d-flex w-100" :class="current ? 'calendar-current_month' : 'calendar-next_month'">
       <div class="d-flex calendar-month mr-4">
-        <span>Дек</span>
+        <span>{{ month }}</span>
       </div>
       <div class="d-flex flex-column w-100">
         <div v-if="current" class="d-flex justify-content-between mb-3 w-100">
@@ -39,6 +39,10 @@ export default {
     current: {
       type: Boolean,
       default: false,
+    },
+    month: {
+      type: String,
+      default: null,
     }
   }
 }

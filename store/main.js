@@ -1,6 +1,5 @@
 export const state = () => ({
   status: '',
-  prices: {},
   locations: [],
   locationsFilter: {
     id: null,
@@ -19,29 +18,8 @@ export const state = () => ({
       guid: "e90f19de-0128-11e5-80c7-00155d903d03",
       type: 'terminal',
     },
-    volume: '0.1',
-    weight: '0.9',
-    // cargo: {
-    //   dimension: {
-    //     quantity: 1,
-    //     volume: 0.13,
-    //     weight: 0.9,
-    //   }
-    // },
-    // gateway: {
-    //   dispatch: {
-    //     point: {
-    //       location: 'Санкт-Петербург',
-    //       terminal: 'default',
-    //     }
-    //   },
-    //   destination: {
-    //     point: {
-    //       location: 'Москва',
-    //       terminal: 'default',
-    //     }
-    //   }
-    // }
+    volume: 0.1,
+    weight: 0.9,
   },
   priceCalculate: {
     base: 0,
@@ -50,19 +28,9 @@ export const state = () => ({
     },
     delivery: 'На следующий день',
     total: 0,
-    // cost: {
-    //   action: null,
-    //   base: 0,
-    //   currency: { RU: true },
-    //   discount: 0,
-    //   total: 0
-    // }
   }
   ,
-  addresses: [
-    { value: 'sd-sdf-df', name: 'Артиллерийская ул. 63' },
-    { value: 'sd-sdf-df', name: 'Суворова ул. 42' },
-  ],
+  addresses: [{ value: null, name: 'Ничего не найдено', region: null }],
   periods: [
     { value: '00:00', name: '07:00', flag: 'morning' },
     { value: '00:00', name: '07:30', flag: 'morning' },
@@ -112,9 +80,11 @@ export const mutations = {
   },
   UPDATE_DEPARTURE_OPTION(state, option) {
     state.departureOption = option
+    state.priceFilter.from.type = option
   },
   UPDATE_RECEIVING_OPTION(state, option) {
     state.receivingOption = option
+    state.priceFilter.to.type = option
   },
   SAVE_PRICE_CALCULATE(state, priceCalculate) {
     state.priceCalculate = priceCalculate
@@ -125,6 +95,12 @@ export const mutations = {
   UPDATE_PRICE_LOCATION(state, query) {
     if(query.source === 'departure') state.priceFilter.from.guid = query.item
     else state.priceFilter.to.guid = query.item
+  },
+  UPDATE_WEIGHT(state, weight) {
+    state.priceFilter.weight = weight
+  },
+  UPDATE_VOLUME(state, volume) {
+    state.priceFilter.volume = volume
   }
 }
 
@@ -132,7 +108,7 @@ export const actions = {
   async fetchLocations({ commit, getters }) {
     commit('SET_STATUS', 'fetching')
     try {
-      const data = await this.$axios.$post(`/location/get/?token=G934UM29wXG2IKYS9iX9oKQCeojkApHSEWAxOC5v`, getters.getLocationsFilter)
+      const data = await this.$axios.$post(`/location/get`, getters.getLocationsFilter)
       commit('SET_STATUS', 'locations-fetched')
       commit('SAVE_LOCATIONS', data)
     } catch {
@@ -142,7 +118,7 @@ export const actions = {
   async fetchPrice({ commit, getters }) {
     commit('SET_STATUS', 'fetching')
     try {
-      const data = await this.$axios.$post(`/price/get/?token=G934UM29wXG2IKYS9iX9oKQCeojkApHSEWAxOC5v`, getters.getPriceFilter)
+      const data = await this.$axios.$post(`/price/get`, getters.getPriceFilter)
       commit('SET_STATUS', 'data-fetched')
       commit('SAVE_PRICE_CALCULATE', data)
     } catch {

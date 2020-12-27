@@ -13,8 +13,8 @@
         <div class="d-flex w-50 flex-column">
           <div class="d-flex flex-column w-100">
             <span class="mb-4 calendar-title">{{ source === 'departure' ? 'Приём' : 'Выдача' }} груза на терминале</span>
-            <CalendarMonth :source="source" :current="true"></CalendarMonth>
-            <CalendarMonth :source="source" :current="false"></CalendarMonth>
+            <CalendarMonth :source="source" :current="true" month="Дек"></CalendarMonth>
+            <CalendarMonth :source="source" :current="false" month="Янв"></CalendarMonth>
           </div>
         </div>
         <div class="w-45">
