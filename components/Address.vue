@@ -8,29 +8,7 @@
       </div>
     </div>
     <div class="d-flex flex-column">
-        <b-form-input
-          placeholder="Улица, дом"
-          class="custom_input"
-          :class="inputState ? '-active' : ''"
-          @focus="inputFromPointFocus"
-        />
-      <div
-        v-if="inputState"
-        class="d-flex flex-column"
-      >
-        <div class="d-flex justify-content-end close_container">
-          <span class="px-2 close_container-button" @click="closeFromPointInput">Закрыть</span>
-        </div>
-        <div class="custom_input_container d-flex flex-column">
-          <div
-            v-for="(address, key) in addresses"
-            :key="key"
-            class="d-flex flex-column py-2 px-4 custom_input_item"
-          >
-            <span>{{ address.name }}</span>
-          </div>
-        </div>
-      </div>
+      <PointInput :source="source" point="address" />
       <div class="d-flex justify-content-end container pointer">
         <span class="add_docs">+ документы к другому адресу</span>
       </div>
@@ -50,18 +28,12 @@
             </div>
             <div class="d-flex align-items-center">
               <div class="d-flex align-items-center mr-2">
-                <span class="mr-1">С</span>
-                <b-form-input
-                  placeholder="00:00"
-                  class="custom_input_time"
-                />
+                <span class="mr-1 secondary_color">С</span>
+                <TimeInput :source="source" point="address"/>
               </div>
               <div class="d-flex align-items-center mr-2">
-                <span class="mr-1">До</span>
-                <b-form-input
-                  placeholder="00:00"
-                  class="custom_input_time"
-                />
+                <span class="mr-1 secondary_color">До</span>
+                <TimeInput :source="source" point="address"/>
               </div>
               <b-icon-info-circle-fill class="m-0 h4 pointer" variant="danger"></b-icon-info-circle-fill>
             </div>
@@ -78,16 +50,14 @@
 
 <script>
 import CalendarMonth from "./CalendarMonth";
+import PointInput from "./PointInput";
+import TimeInput from "./TimeInput";
 export default {
   name: "Address",
-  components: {CalendarMonth},
+  components: {TimeInput, PointInput, CalendarMonth},
   data() {
     return {
       inputState: false,
-      addresses: [
-        { value: 'sd-sdf-df', name: 'Артиллерийская ул. 63' },
-        { value: 'sd-sdf-df', name: 'Суворова ул. 42' },
-      ]
     }
   },
   props: {
@@ -96,13 +66,5 @@ export default {
       default: null
     }
   },
-  methods: {
-    inputFromPointFocus() {
-      this.inputState = true
-    },
-    closeFromPointInput() {
-      this.inputState = false
-    },
-  }
 }
 </script>

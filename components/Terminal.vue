@@ -7,28 +7,22 @@
         <span class="custom_geo_alt-title">выбрать на карте</span>
       </div>
     </div>
-    <div class="d-flex flex-column">
-      <b-form-input
-        id="input-invalid"
-        placeholder="Улица, дом"
-        class="custom_input"
-        :class="inputState ? '-active' : ''"
-        @focus="showItemsList"
-      />
-      <div
-        v-if="inputState"
-        class="d-flex flex-column"
-      >
-        <div class="d-flex justify-content-end close_container">
-          <span class="px-2 close_container-button" @click="hideItemsList">Закрыть</span>
+    <PointInput :source="source" point="terminal" />
+    <div class="d-flex w-100 flex-column mt-4">
+      <div class="d-flex w-100 justify-content-between mb-4">
+        <div class="d-flex w-50 flex-column">
+          <div class="d-flex flex-column w-100">
+            <span class="mb-4 calendar-title">{{ source === 'departure' ? 'Приём' : 'Выдача' }} груза на терминале</span>
+            <CalendarMonth :source="source" :current="true"></CalendarMonth>
+            <CalendarMonth :source="source" :current="false"></CalendarMonth>
+          </div>
         </div>
-        <div class="custom_input_container d-flex flex-column">
-          <div
-            v-for="(address, key) in addresses"
-            :key="key"
-            class="d-flex flex-column py-2 px-4 custom_input_item"
-          >
-            <span>{{ address.name }}</span>
+        <div class="w-45">
+          <div class="d-flex align-items-center w-100">
+            <div class="d-flex align-items-center w-50 mr-2">
+              <span class="mr-1 secondary_color">С</span>
+              <TimeInput :source="source" point="terminal"/>
+            </div>
           </div>
         </div>
       </div>
@@ -37,15 +31,15 @@
 </template>
 
 <script>
+import CalendarMonth from "./CalendarMonth";
+import PointInput from "./PointInput";
+import TimeInput from "./TimeInput";
 export default {
   name: "Terminal",
+  components: {TimeInput, PointInput, CalendarMonth },
   data() {
     return {
       inputState: false,
-      addresses: [
-        { value: 'sd-sdf-df', name: 'Артиллерийская ул. 63' },
-        { value: 'sd-sdf-df', name: 'Суворова ул. 42' },
-      ]
     }
   },
   props: {
@@ -54,13 +48,5 @@ export default {
       default: null
     }
   },
-  methods: {
-    showItemsList() {
-      this.inputState = true
-    },
-    hideItemsList() {
-      this.inputState = false
-    },
-  }
 }
 </script>

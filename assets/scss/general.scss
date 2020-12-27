@@ -14,6 +14,24 @@ html {
   margin: 0;
 }
 
+.secondary_color {
+  color: red;
+}
+
+.custom_icon {
+
+  &-arrows {
+    transform: rotate(90deg);
+  }
+}
+
+.calculate_step_point {
+  padding: 8px 16px 8px 16px;
+  background: red;
+  border-radius: 50px;
+  color: white;
+}
+
 .button--green {
   display: inline-block;
   border-radius: 4px;
@@ -100,6 +118,10 @@ html {
   width: 600px;
   background: white;
 
+  &.-periods {
+    width: 115px;
+  }
+
   &::-webkit-scrollbar { width: 0; }
 }
 
@@ -119,6 +141,12 @@ html {
 .close_container {
   border-left: 1px solid red;
   border-right: 1px solid red;
+  position: absolute;
+  margin-left: 530px;
+
+  &.-periods {
+    margin-left: 75px;
+  }
 
   &-button {
     cursor: pointer;
@@ -193,4 +221,9 @@ html {
   &-next_month {
     padding-top: 12px;
   }
+}
+
+.total_cost {
+  font-size: 24px;
+  color: red;
 }
