@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b8fb0293-f48d-443f-9161-4d71fe8d4858" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/scss/general.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/scss/general.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Address.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/Address.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/CalendarMonth.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/CalendarMonth.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/CityPoint.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/CityPoint.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Terminal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/Terminal.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/store/main.js" afterDir="false" />
-    </list>
+    <list default="true" id="b8fb0293-f48d-443f-9161-4d71fe8d4858" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,7 +33,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../woodoo-rocks" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Frontend/skillline-test" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -66,7 +57,7 @@
       <updated>1608993078415</updated>
       <workItem from="1608993082081" duration="27661000" />
       <workItem from="1609055075520" duration="25960000" />
-      <workItem from="1609096192214" duration="5584000" />
+      <workItem from="1609096192214" duration="5942000" />
     </task>
     <servers />
   </component>
